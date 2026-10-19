@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vocabulary checkpoint · Learn</title>
+<style>
+:root{color-scheme:light;--ink:#203a34;--muted:#61716b;--green:#246b55;--line:#dce5dc;--paper:#fffef9}*{box-sizing:border-box}body{margin:0;background:#f1f3e9;color:var(--ink);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #bd7500;outline-offset:4px}button:disabled{cursor:default}header{max-width:1080px;margin:auto;padding:30px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:750;letter-spacing:-.7px;font-size:21px}.mark{display:inline-grid;place-items:center;background:var(--green);color:white;border-radius:10px;width:34px;height:34px;margin-right:10px}.pill{font-size:12px;letter-spacing:.09em;text-transform:uppercase;border:1px solid #ccd7ca;border-radius:30px;padding:6px 12px}main{max-width:1000px;margin:22px auto 60px;padding:0 28px}p{margin:0}.muted{color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:24px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 10px 28px #243e3010}.meta{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;color:var(--muted)}.tag{color:var(--green);background:#e9f0e5;padding:4px 9px;border-radius:6px;font-weight:650}h2{font-size:28px;line-height:1.3;letter-spacing:-.5px;margin:24px 0}.instruction{font-size:14px;color:var(--muted);margin-bottom:16px}.options{display:grid;gap:10px}.option{text-align:left;width:100%;background:white;border:1.5px solid #d9e1d9;border-radius:12px;padding:15px;display:flex;align-items:center;gap:13px;color:var(--ink);line-height:1.4}.option:not(:disabled):hover{background:#f0f5e9;border-color:#6c957e}.key{flex-shrink:0;border:1px solid #d8dfd7;border-radius:6px;display:grid;place-items:center;width:27px;height:27px;font-size:12px;color:var(--muted)}.option.correct{background:#e6f3e8;border-color:#338258}.option.wrong{background:#fff0e9;border-color:#b65a39}.feedback{margin-top:20px;border-left:3px solid var(--green);padding:2px 0 2px 14px}.feedback.error{border-color:#b65a39}.feedback p{font-size:14px;margin-top:6px}.actions{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:14px}.primary,.secondary{border-radius:10px;padding:11px 18px;font-weight:650}.primary{background:var(--green);color:white;border:1px solid var(--green)}.primary:hover{background:#19503f}.secondary{background:transparent;border:1px solid #bacbbd;color:var(--ink)}.hint{font-size:12px;color:var(--muted)}aside .card{padding:22px;box-shadow:none}h3{font-size:16px;margin:0 0 15px}.count{font-size:34px;letter-spacing:-1px;font-weight:700}.count small{font-size:15px;font-weight:400;color:var(--muted)}progress{width:100%;height:9px;appearance:none;display:block;margin:14px 0;background:#e1e8dc;border:0;border-radius:10px;overflow:hidden}progress::-webkit-progress-bar{background:#e1e8dc}progress::-webkit-progress-value{background:var(--green)}progress::-moz-progress-bar{background:var(--green)}.stat{display:flex;justify-content:space-between;font-size:13px;margin:10px 0}.rule{border-top:1px solid var(--line);padding-top:17px;margin-top:18px;font-size:13px;color:var(--muted)}.finish-icon{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#e6f3e8;font-size:30px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0}.result-grid div{background:#f0f3e8;padding:16px;border-radius:12px}.result-grid strong{display:block;font-size:25px}.result-grid span{font-size:13px;color:var(--muted)}.review-row{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}.review-row small{display:block;color:var(--muted)}footer{margin-top:22px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:720px){header{padding:20px}.pill{display:none}main{padding:0 18px;margin-top:12px}.layout{grid-template-columns:1fr}.card{padding:23px}aside{order:-1}aside .card{padding:16px 20px}aside h3{margin-bottom:4px}.count{font-size:24px}aside .rule{display:none}aside .stat{display:inline-flex;gap:8px;margin:4px 16px 0 0}.actions{flex-wrap:wrap}h2{font-size:24px}.hint{display:none}}
+@media(prefers-reduced-motion:no-preference){.card{animation:appear .25s ease}@keyframes appear{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="mark" aria-hidden="true">✦</span>Word practice</div><button class="secondary" id="restart">Start over</button></header>
+<main>
+<div class="layout"><section class="card" id="practice" aria-label="Vocabulary practice"><div class="meta"><span class="tag" id="direction"></span><span id="questionNo"></span></div><h2 id="prompt" tabindex="-1"></h2><p class="instruction" id="instruction"></p><div id="options" class="options" role="group" aria-labelledby="prompt instruction"></div><div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div><div class="actions"><span class="hint">Use keys 1–4 to choose an answer</span><button id="next" class="primary" hidden>Continue →</button></div></section>
+<section class="card" id="results" aria-label="Checkpoint results" hidden></section>
+<aside><div class="card"><h3>Your progress</h3><div class="count"><span id="mastered">0</span> <small>/ 8 words learned</small></div><progress id="progress" max="16" value="0" aria-label="Learning progress"></progress><div class="stat"><span>Correct answers</span><strong id="correctCount">0 / 0</strong></div><div class="stat"><span>Accuracy</span><strong id="accuracy">—</strong></div><p class="rule">Choose correctly to continue. Learn each word in both directions without a mistake; missed words return for practice.</p></div></aside></div>
+<footer>Self-paced practice · No timer · Works offline · Progress lasts while this page is open.</footer>
+</main>
+<script>
+'use strict';
+const cards=[
+{term:'a sleep pattern',definition:'the regular, habitual schedule of when and how you sleep',example:'A consistent bedtime can help improve your sleep pattern.'},
+{term:'a downside',definition:'disadvantage',example:'One downside of working late is having less time to relax.'},
+{term:'caution',definition:'warning',example:'The sign offered a word of caution about the slippery path.'},
+{term:'a hazard',definition:'danger',example:'Loose cables on the floor are a hazard.'},
+{term:'to turn down',definition:'not accept an offer, request or application',example:'She decided to turn down the job offer.'},
+{term:'to keep at something',definition:'continue doing or working on something, especially when it is difficult',example:'Keep at it, even when the exercise feels difficult.'},
+{term:'to keep up with',definition:'go at the same speed as',example:'I walked faster to keep up with my friends.'},
+{term:'to put things off',definition:'postpone; make something happen later',example:'Try not to put things off until the last minute.'}
+];
+const $=id=>document.getElementById(id);
+const shuffle=items=>{let a=[...items];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let levels,misses,queue,current,choices,answered,attempts,correct,firstCorrect,firstSeen,tried,hadMistake,questionCount;
+function update(){const learned=levels.filter(x=>x===2).length;$('mastered').textContent=learned;$('progress').value=levels.reduce((a,b)=>a+b,0);$('correctCount').textContent=correct+' / '+attempts;$('accuracy').textContent=attempts?Math.round(correct/attempts*100)+'%':'—';}
+function start(){levels=cards.map(()=>0);misses=cards.map(()=>0);firstSeen=new Set();firstCorrect=0;queue=shuffle(cards.map((_,i)=>i));attempts=correct=0;$('practice').hidden=false;$('results').hidden=true;questionCount=0;update();ask();}
+function ask(){if(!queue.length){finish();return;}current=queue.shift();answered=false;tried=new Set();hadMistake=false;questionCount++;const reverse=levels[current]===1;const field=reverse?'term':'definition';$('direction').textContent=reverse?'Recall the term':'Find the meaning';$('questionNo').textContent='Question '+questionCount;$('prompt').textContent=cards[current][reverse?'definition':'term'];$('instruction').textContent=reverse?'Which term matches this definition?':'Choose the matching definition.';$('feedback').hidden=true;$('next').hidden=true;
+// Prefer distractors of the same type: phrasal verbs together, nouns together.
+const pool=cards.map((_,i)=>i).filter(i=>i!==current);const same=shuffle(pool.filter(i=>(i>=4)===(current>=4)));const other=shuffle(pool.filter(i=>(i>=4)!==(current>=4)));choices=shuffle([current,...same.concat(other).slice(0,3)]);$('options').replaceChildren();choices.forEach((index,n)=>{let b=document.createElement('button');b.className='option';b.type='button';const k=document.createElement('span');k.className='key';k.setAttribute('aria-hidden','true');k.textContent=n+1;const label=document.createElement('span');label.textContent=cards[index][field];b.append(k,label);b.addEventListener('click',()=>answer(index));$('options').append(b);});}
+function answer(index){
+if(answered||tried.has(index)||!choices.includes(index))return;
+attempts++;const right=index===current;
+if(!firstSeen.has(current)){firstSeen.add(current);if(right)firstCorrect++;}
+const f=$('feedback');f.replaceChildren();f.hidden=false;
+if(!right){
+  tried.add(index);hadMistake=true;levels[current]=0;misses[current]++;
+  const button=$('options').children[choices.indexOf(index)];
+  button.disabled=true;button.classList.add('wrong');button.lastChild.textContent+=' ✕';
+  f.className='feedback error';f.textContent='Not quite. Try another option.';
+  update();
+  // Keep all untried options neutral until the learner chooses the correct answer.
+  const available=[...$('options').children].find(b=>!b.disabled);if(available)available.focus();
+  return;
+}
+answered=true;correct++;if(!hadMistake)levels[current]++;
+if(levels[current]<2){queue.splice(Math.min(3,queue.length),0,current);}
+[...$('options').children].forEach((b,n)=>{b.disabled=true;if(choices[n]===current){b.classList.add('correct');b.lastChild.textContent+=' ✓ Correct answer';}});
+f.className='feedback';const title=document.createElement('strong');
+title.textContent=hadMistake?'Correct. We’ll practise this word again.':(levels[current]===2?'Word learned!':'Correct — one step closer.');
+const meaning=document.createElement('p');meaning.textContent=cards[current].term+' → '+cards[current].definition;
+const example=document.createElement('p');example.textContent='Example: '+cards[current].example;
+f.append(title,meaning,example);update();$('next').textContent=queue.length?'Continue →':'See results →';$('next').hidden=false;$('next').focus();
+}
+function finish(){$('practice').hidden=true;$('results').hidden=false;const panel=$('results');panel.innerHTML='<div class="finish-icon" aria-hidden="true">✓</div><h2 tabindex="-1">Checkpoint complete.</h2><p class="muted">You learned all 8 words in both directions. Keep the momentum going!</p><div class="result-grid"><div><strong>'+firstCorrect+' / 8</strong><span>Correct on first encounter</span></div><div><strong>'+Math.round(correct/attempts*100)+'%</strong><span>Accuracy across '+attempts+' answers</span></div></div><h3>Your word review</h3>';
+cards.forEach((c,i)=>{let row=document.createElement('div');row.className='review-row';let term=document.createElement('strong');term.textContent=c.term;let desc=document.createElement('small');desc.textContent=c.definition+' · '+(misses[i]?misses[i]+' incorrect '+(misses[i]===1?'answer':'answers')+' reviewed':'No mistakes');row.append(term,desc);panel.append(row);});let b=document.createElement('button');b.className='primary';b.style.marginTop='24px';b.textContent='Practice again';b.onclick=()=>{start();$('prompt').focus();};panel.append(b);panel.querySelector('h2').focus();}
+$('next').onclick=()=>{ask();if(!$('practice').hidden)$('prompt').focus();};$('restart').onclick=()=>{start();$('prompt').focus();};document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||e.repeat||$('practice').hidden)return;if(/^[1-4]$/.test(e.key)&&!answered){e.preventDefault();answer(choices[Number(e.key)-1]);}});start();
+</script>
+</body></html>
